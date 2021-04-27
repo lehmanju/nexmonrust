@@ -1,6 +1,6 @@
 # Nexmon and Rust
 
-Nexmon uses custom Makefiles for compiling and flashing patches. To integrate Rust code we have to modify some parts. From my understanding, the Nexmon Makefile first compiles C code to `.obj` files and then links them with the rest of the firmware. Some helper files are generated along the way `.pre`, not sure what their purpose is. But we should be able to replace `gcc` with `rust` and generate object files manually for Rust.
+Nexmon uses custom Makefiles for compiling and flashing patches. To integrate Rust code we have to modify some parts. From my understanding, the Nexmon Makefile in each patch directory first compiles C code to `.obj` files and then links them with the rest of the firmware. Some helper files are generated along the way `.pre`, not sure what their purpose is. But we should be able to replace `gcc` with `rust` and generate object files manually for Rust.
 
 [This](https://users.rust-lang.org/t/how-create-obj-file-from-rust-code-without-core-panic/40441/16) thread should answer how to generate `.obj` from Rust. Several possibilities exist:
 
