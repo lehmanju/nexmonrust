@@ -20,14 +20,9 @@ edition = "2018"
 [dependencies] # you may depend on libc if you so wish:
 # libc = { version = "*", default-features = false }
 
-[profile.dev]
-panic = "abort"
-overflow-checks = false
-lto = false
-
-[profile.release]
-panic = "abort"
-overflow-checks = false
-lto = false
 ```
 Afterwards, one would need to adjust the Makefile to link with `libfoo.a` instead of multiple object files.
+
+To cross compile Rust for ARM, the `Cargo.toml` file in this repository contains a few extra configuration options. To find the correct toolchain for your platform, look at [](https://doc.rust-lang.org/nightly/rustc/platform-support.html). You then have to install it with `rustup target add <toolchain>` and adjust `target=` in `Cargo.toml`.
+
+An interesting resource for Rust on embedded systems is the following book: [](https://docs.rust-embedded.org/book/intro/index.html)

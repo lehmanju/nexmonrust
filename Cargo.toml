@@ -1,0 +1,34 @@
+[package]
+name = "nexmonrust"
+version = "0.1.0"
+authors = ["Julius Lehmann <julius@devpi.de>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = [ "staticlib" ] # to generate a `lib<package_name>.a`
+                             # i.e. an archive of `.o` file
+
+[dependencies] # you may depend on libc if you so wish:
+# libc = { version = "*", default-features = false }
+
+[profile.dev]
+panic = "abort"
+overflow-checks = false
+lto = false
+
+[profile.release]
+panic = "abort" # abort or unwind
+opt-level = 3
+debug = false
+debug-assertions = false
+overflow-checks = false
+lto = false
+incremental = false
+codegen-units = 16
+rpath = false
+
+[build]
+target = x86_64-unknown-linux-gnu # change to desired target, probably arm
+rustflags = ["-C","target-cpu=skylake"]
